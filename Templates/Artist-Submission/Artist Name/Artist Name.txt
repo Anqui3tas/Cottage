@@ -1,0 +1,12 @@
+Name: Your name
+Display Name: Your artist name
+Link: https://example.com/your-profile
+Link: https://example.com/another-profile
+Description: Tell people about yourself and your artwork.
+
+Usage:
+[Replace this section with your actual usage permissions before submitting.]
+Permission for The Cottage to distribute and store this artwork on users' devices: [Specify permission.]
+Allowed uses: [Specify whether personal wallpapers, sending stickers in messages, or other uses are allowed.]
+Restrictions: [Specify restrictions on redistribution, editing, commercial use, or other uses.]
+Attribution: [Specify how you want to be credited.]
