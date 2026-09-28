@@ -23,13 +23,15 @@ Artwork is downloaded only when someone adds a pack, verified against its checks
 
 ## Updating the catalog
 
-After adding or changing artist folders:
+`catalog.json` is rebuilt automatically. When changes to `Artists/` are pushed to `main`, the Catalog workflow validates the folders, regenerates `catalog.json`, and commits it. Pull requests are validated without committing. It can also be run manually from the Actions tab.
+
+To build it locally instead:
 
 ```sh
 python3 Scripts/build_catalog.py . --repository Anqui3tas/Cottage
 ```
 
-Commit the updated `catalog.json` along with the artwork. Artists with `Usage: Pending artist confirmation.` are listed, but their packs can't be downloaded until usage terms are added.
+Artists with `Usage: Pending artist confirmation.` are listed, but their packs can't be downloaded until usage terms are added.
 
 ## Building
 

@@ -192,7 +192,7 @@ nonisolated enum CottageHTTP {
     // Enforce the limit while streaming, before a large response can fill memory.
     static func data(from url: URL, maximumBytes: Int, revalidate: Bool = false, session: URLSession = .shared) async throws -> Data {
         guard url.scheme == "https" else { throw URLError(.badURL) }
-        let request = URLRequest(url: url, cachePolicy: revalidate ? .reloadRevalidatingCacheData : .useProtocolCachePolicy, timeoutInterval: 30)
+        let request = URLRequest(url: url, cachePolicy: revalidate ? .reloadIgnoringLocalCacheData : .useProtocolCachePolicy, timeoutInterval: 30)
         let (bytes, response) = try await session.bytes(for: request)
         guard let response = response as? HTTPURLResponse,
               response.url?.scheme == "https", (200..<300).contains(response.statusCode) else {
