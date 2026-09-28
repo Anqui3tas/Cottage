@@ -1,0 +1,2 @@
+# Cottage
+The Cottage is a place for artists to share and distribute their artwork for iMessage stickers and download via the app. It is artist first, free to use, with minimal moderation (simply to retain the app store rating). AI artwork is not permitted, and all images are stored here in this github alongside the app project. AI notice: LLMs may be used with the development of the app via autocomplete, xcode suggestions, or fixes searched via the web. 
