@@ -71,32 +71,42 @@ private struct ArtworkGallery: View {
     let entry: CottageArtworkEntry
     @Environment(CottageStore.self) private var store
     private var installed: CottageInstalledPack? { store.installedPacks.first { $0.id == entry.id } }
+    private var files: [CottageMediaFile] {
+        entry.artwork.deliveryKind == .cottage ? entry.artwork.files ?? [] : []
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            if let files = entry.artwork.files, !files.isEmpty, let installed {
+            if files.isEmpty {
+                CottageArtworkPreview(artwork: entry.artwork, cornerRadius: 22)
+                    .aspectRatio(entry.artwork.kind == .stickerPack ? 1.3 : 0.8, contentMode: .fit)
+            } else {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: entry.artwork.kind == .stickerPack ? 84 : 135))], spacing: 16) {
                     ForEach(files) { file in
-                        if let url = installed.fileURL(for: file) {
-                            ShareLink(item: url) {
-                                CottageRemoteImage(url: url, fit: true)
-                                    .aspectRatio(entry.artwork.kind == .stickerPack ? 1 : 0.65, contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                            }
-                            .accessibilityLabel(Text("Share \(file.title) by \(entry.creditedArtists.map(\.displayName).formatted())"))
+                        // Saved packs use local files and can be shared; others preview from the catalog.
+                        if let installed, let url = installed.fileURL(for: file) {
+                            ShareLink(item: url) { tile(url) }
+                                .accessibilityLabel(Text("Share \(file.title) by \(entry.creditedArtists.map(\.displayName).formatted())"))
+                        } else {
+                            tile(file.url)
+                                .accessibilityLabel(Text("\(file.title) by \(entry.creditedArtists.map(\.displayName).formatted())"))
                         }
                     }
                 }
+            }
+            if installed != nil {
                 Text("Tap an image to share or save it.").font(.caption).foregroundStyle(.secondary)
-            } else {
-                CottageArtworkPreview(artwork: entry.artwork, cornerRadius: 22)
-                    .aspectRatio(entry.artwork.kind == .stickerPack ? 1.3 : 0.8, contentMode: .fit)
-                if let count = entry.artwork.itemCount {
-                    Text("^[\(count) image](inflect: true) · Free")
-                        .font(.subheadline).foregroundStyle(.secondary)
-                }
+            } else if let count = entry.artwork.itemCount {
+                Text("^[\(count) image](inflect: true) · Free")
+                    .font(.subheadline).foregroundStyle(.secondary)
             }
         }
+    }
+
+    private func tile(_ url: URL) -> some View {
+        CottageRemoteImage(url: url, fit: true)
+            .aspectRatio(entry.artwork.kind == .stickerPack ? 1 : 0.65, contentMode: .fit)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 

@@ -129,6 +129,8 @@ nonisolated struct CottageArtwork: Codable, Hashable, Identifiable, Sendable {
     let itemCount: Int?
     var collectionTitle: String? = nil
     var files: [CottageMediaFile]? = nil
+    // Folder order from the catalog (numbered collections and packs).
+    var order: Int? = nil
 }
 
 nonisolated struct CottageCatalog: Codable, Hashable, Sendable {

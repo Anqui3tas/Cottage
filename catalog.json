@@ -47,7 +47,8 @@
           "url": "https://raw.githubusercontent.com/Anqui3tas/Cottage/main/Artists/Kyra/Heated%20Rivalry/01.Logos/MLH%20Logo.png?v=8dba195e745483afb7e216095b4e20f93a4aaca3576e94eb66805bcb69180074",
           "sha256": "8dba195e745483afb7e216095b4e20f93a4aaca3576e94eb66805bcb69180074"
         }
-      ]
+      ],
+      "order": 0
     },
     {
       "id": "Kyra/Heated Rivalry/Objects",
@@ -114,7 +115,8 @@
           "url": "https://raw.githubusercontent.com/Anqui3tas/Cottage/main/Artists/Kyra/Heated%20Rivalry/02.Objects/Tough%20Guy.png?v=0569c8fc1cf8aed714b6aeb4b550b69c159f2d92e8464fbcdd80451e4d9d1f9e",
           "sha256": "0569c8fc1cf8aed714b6aeb4b550b69c159f2d92e8464fbcdd80451e4d9d1f9e"
         }
-      ]
+      ],
+      "order": 1
     },
     {
       "id": "Kyra/Heated Rivalry/Teams",
@@ -307,7 +309,8 @@
           "url": "https://raw.githubusercontent.com/Anqui3tas/Cottage/main/Artists/Kyra/Heated%20Rivalry/03.Teams/Raiders%20Rozanov%2081.png?v=e09aeb9988e9115116bcb3502d601e2b099e1da87be717e3be557659e6bcf60f",
           "sha256": "e09aeb9988e9115116bcb3502d601e2b099e1da87be717e3be557659e6bcf60f"
         }
-      ]
+      ],
+      "order": 2
     }
   ]
 }

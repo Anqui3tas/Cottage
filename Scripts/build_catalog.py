@@ -108,6 +108,7 @@ def build(root, repository, ref):
                     credits=[dict(artistID=artist_id, role="artist")], previewURL=files[0]["url"],
                     deliveryKind="cottage" if approved else "planned",
                     usageLicense="artist_specified" if approved else "unspecified", itemCount=len(files), files=files,
+                    order=len(artworks),
                 ))
     if len({a['id'] for a in artists}) != len(artists) or len({a['id'] for a in artworks}) != len(artworks):
         raise ValueError("Duplicate artist or pack identities after removing numbering")

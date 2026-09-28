@@ -10,18 +10,25 @@ import SwiftUI
 import UIKit
 
 final class MessagesViewController: MSMessagesAppViewController {
-    private var hostingController: UIHostingController<CottageMessagesPicker>?
+    private let state = CottageMessagesState()
 
     override func willBecomeActive(with conversation: MSConversation) {
         super.willBecomeActive(with: conversation)
+        state.isExpanded = presentationStyle == .expanded
         // Reload shared packs each time Messages opens the extension.
-        hostingController?.rootView = CottageMessagesPicker()
+        state.reloadID = UUID()
+    }
+
+    override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
+        super.willTransition(to: presentationStyle)
+        state.isExpanded = presentationStyle == .expanded
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let hostingController = UIHostingController(rootView: CottageMessagesPicker())
+        let hostingController = UIHostingController(rootView: CottageMessagesPicker(state: state))
+        hostingController.view.backgroundColor = .clear
         addChild(hostingController)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(hostingController.view)
@@ -32,7 +39,5 @@ final class MessagesViewController: MSMessagesAppViewController {
             hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         hostingController.didMove(toParent: self)
-        self.hostingController = hostingController
     }
-
 }

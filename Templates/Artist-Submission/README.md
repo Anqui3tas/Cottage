@@ -22,7 +22,7 @@ Artists/
 4. Add PNG stickers to each pack. Keep original PNGs at most 20 MB, 8192 pixels per side, and 40 megapixels. The app prepares smaller copies for Messages without changing the originals. Transparent backgrounds are recommended. Up to 200 images per pack. Empty template folders are ignored.
 5. For a wallpaper pack, add `Pack.txt` inside that pack containing `Type: wallpaper`. Wallpapers may be up to 20 MB, 8192 pixels per side, and 40 megapixels. Sticker packs require no extra text file.
 
-The first image becomes the pack preview. It is fetched when its card is displayed; the other images are fetched only when the user adds that pack. Folder and file paths identify content. Reordering a numeric prefix preserves identity; renaming an artist, collection, pack, or image otherwise counts as removing the old item and adding a new one. Contact the maintainer before renaming published folders. Do not publish duplicate names that differ only in numbering.
+The first image becomes the pack preview. All images in a pack are shown as previews on its page; they are saved to the device only when the pack is added. Folder and file paths identify content. Reordering a numeric prefix preserves identity; renaming an artist, collection, pack, or image otherwise counts as removing the old item and adding a new one. Contact the maintainer before renaming published folders. Do not publish duplicate names that differ only in numbering.
 
 You retain ownership of your artwork. Participation, app access, and pack access are free. Your submission must include permission to distribute every included image. Valid DMCA takedown notices will be honored.
 
