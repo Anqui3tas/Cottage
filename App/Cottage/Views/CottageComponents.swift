@@ -219,15 +219,6 @@ struct CottageAboutScreen: View {
                 CottageSectionHeader(title: "Made by artists", subtitle: "Artwork belongs to its artists and rights holders. Please follow each artist's usage permissions and keep their credit attached.")
                 CottageSectionHeader(title: "Saved for you", subtitle: "Only the packs you add are stored on your device. Open The Cottage to check for new collections and updates.")
                 CottageSectionHeader(title: "Respecting artists", subtitle: "Valid DMCA takedown notices will be honored. Removed artwork is cleared from this app on the next successful catalog update; copies already shared cannot be recalled.")
-                if PantheonAnalytics.isAvailable {
-                    VStack(alignment: .leading, spacing: 10) {
-                        PantheonAnalyticsToggle()
-                            .font(.headline)
-                        Text(PantheonAnalytics.explanation)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                }
                 Link("About The Cottage", destination: CottageServiceConfiguration.aboutURL)
             }
             .padding(24)
