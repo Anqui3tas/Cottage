@@ -30,7 +30,10 @@ struct CottageRootView: View {
         }
         .environment(store)
         .task(id: scenePhase) {
-            if scenePhase == .active { await store.refresh() }
+            if scenePhase == .active {
+                UsageAttributes.refresh()
+                await store.refresh()
+            }
         }
         .alert("Something needs attention", isPresented: Binding(
             get: { store.errorMessage != nil },
